@@ -40,3 +40,8 @@ li a:hover {
   background-color: #62727b;
   color: white;
 }
+
+/*space between icon and text*/
+.mr {
+	margin-right: 1em;
+}
