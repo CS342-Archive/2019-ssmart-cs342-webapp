@@ -1,4 +1,7 @@
 import React from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faHome, faCog } from "@fortawesome/free-solid-svg-icons";
+
 import './../styles/sidebar.css';
 
 class Sidebar extends React.Component {
@@ -6,9 +9,9 @@ class Sidebar extends React.Component {
     return (
     	<div class="sidebar">
 		  	<ul>
-		  		<li><a href="default.asp">Home</a></li>
-		  		<li><a href="default.asp">Patients</a></li>
-		  		<li><a href="default.asp">Stats</a></li>
+		  		<li><a href="#"><FontAwesomeIcon icon={faHome} className="mr-3"/>Home</a></li>
+		  		<li><a href="#"><FontAwesomeIcon icon={faCog} className="mr-3"/>Patients</a></li>
+		  		<li><a href="#"><FontAwesomeIcon icon={faHome} className="mr-3"/>Stats</a></li>
 		   	</ul>
 	   	</div>
 		);
