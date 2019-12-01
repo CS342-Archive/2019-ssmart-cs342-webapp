@@ -3,7 +3,8 @@
 	/*make sure margin-left in .content in dashboard.css has the same value*/
 	width: 240px;
 	/*background-color: #252525;*/
-	background-color: #f1f1f1;
+	/*background-color: #f1f1f1;*/
+	background-color: #37474f;
 	position: fixed;
   z-index: 1;
   top: 0;
@@ -23,7 +24,7 @@ li {
 
 li a {
   display: block;
-  color: #000;
+  color: #62727b;
   padding: 8px 16px;
 }
 
@@ -35,6 +36,7 @@ a:hover, a:visited, a:link, a:active {
 /* change the link color on hover */
 li a:hover {
 	border-radius: 5px;
-  background-color: #555;
+  /*background-color: #555;*/
+  background-color: #62727b;
   color: white;
 }

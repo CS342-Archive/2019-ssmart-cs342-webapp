@@ -9,9 +9,9 @@ class Sidebar extends React.Component {
     return (
     	<div class="sidebar">
 		  	<ul>
-		  		<li><a href="#"><FontAwesomeIcon icon={faHome} className="mr-3"/>Home</a></li>
-		  		<li><a href="#"><FontAwesomeIcon icon={faCog} className="mr-3"/>Patients</a></li>
-		  		<li><a href="#"><FontAwesomeIcon icon={faHome} className="mr-3"/>Stats</a></li>
+		  		<li><a href="#"><FontAwesomeIcon icon={faHome} className="mr-4"/>{' '}Home</a></li>
+		  		<li><a href="#"><FontAwesomeIcon icon={faCog} className="mr-4"/>Patients</a></li>
+		  		<li><a href="#"><FontAwesomeIcon icon={faHome} className="mr-4"/>Stats</a></li>
 		   	</ul>
 	   	</div>
 		);

@@ -4,5 +4,13 @@
 }
 
 .content {
+	min-height: 100vh;
 	margin-left: 240px;
+	padding: 5px;
+	background: #EFEFEF;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: flex-start;
+	align-content: flex-start;
 }
