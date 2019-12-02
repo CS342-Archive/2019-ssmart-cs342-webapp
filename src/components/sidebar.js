@@ -7,7 +7,7 @@ import './../styles/sidebar.css';
 class Sidebar extends React.Component {
   render() {
     return (
-    	<div class="sidebar">
+    	<div className="sidebar">
 		  	<ul>
 		  		<li><a href="#"><FontAwesomeIcon icon={faHome} className="mr"/>Home</a></li>
 		  		<li><a href="#"><FontAwesomeIcon icon={faCog} className="mr"/>Patients</a></li>

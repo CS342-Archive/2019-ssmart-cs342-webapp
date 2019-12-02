@@ -7,9 +7,9 @@ import './../styles/dashboard.css';
 class Dashboard extends React.Component {
 	render() {
 		return (
-			<div class="dashboard">
+			<div className="dashboard">
 				<Sidebar />
-				<div class="content">
+				<div className="content">
 					<Tile />
 				</div>
 			</div>

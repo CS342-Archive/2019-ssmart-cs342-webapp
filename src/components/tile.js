@@ -14,9 +14,9 @@ class Tile extends React.Component {
 }
 
     return (
-    	// <div class="tile">
-    		<ChartistGraph data={data} type={'Line'} /> 
-	   	// </div>
+    	<div className="tile">
+    		<ChartistGraph data={data} type={'Line'} />
+	   	</div>
 		);
 	}
 }
