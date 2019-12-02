@@ -4,79 +4,45 @@ import './App.css';
 import firebase from 'firebase'
 import config from './config'
 
+import { connect } from "react-redux";
+import dataAction from "./actions/dataAction";
+import { startAction } from "./actions/startAction";
+import { stopAction } from "./actions/stopAction";
+
 import Dashboard from './components/dashboard'
+
+import { compose } from 'redux'
+import { firestoreConnect } from 'react-redux-firebase'
 
 class App extends React.Component {
   constructor(props) {
     super(props);
-    firebase.initializeApp(config);
-    this.db = firebase.firestore();
-
-
-//     var citiesRef = db.collection("cities");
-
-// citiesRef.doc("SF").set({
-//     name: "San Francisco", state: "CA", country: "USA",
-//     capital: false, population: 860000,
-//     regions: ["west_coast", "norcal"] });
-// citiesRef.doc("LA").set({
-//     name: "Los Angeles", state: "CA", country: "USA",
-//     capital: false, population: 3900000,
-//     regions: ["west_coast", "socal"] });
-// citiesRef.doc("DC").set({
-//     name: "Washington, D.C.", state: null, country: "USA",
-//     capital: true, population: 680000,
-//     regions: ["east_coast"] });
-// citiesRef.doc("TOK").set({
-//     name: "Tokyo", state: null, country: "Japan",
-//     capital: true, population: 9000000,
-//     regions: ["kanto", "honshu"] });
-// citiesRef.doc("BJ").set({
-//     name: "Beijing", state: null, country: "China",
-//     capital: true, population: 21500000,
-//     regions: ["jingjinji", "hebei"] });
-
-
-
+    // firebase.initializeApp(config);
+    // this.db = firebase.firestore();
     this.state = {
       data: []
     }
   }
 
-
-// db.collection("cities").where("state", "==", "CA")
-//     .onSnapshot(function(querySnapshot) {
-//         var cities = [];
-//         querySnapshot.forEach(function(doc) {
-//             cities.push(doc.data().name);
-//         });
-//         console.log("Current cities in CA: ", cities.join(", "));
-//     });
-
-    
-  getUpdate = () => {
-    this.db.collection("test").doc("data")
-      .onSnapshot(function(doc) {
-          var source = doc.metadata.hasPendingWrites ? "Local" : "Server";
-          console.log(source, " data: ", doc.data());
+  // gets data from firestore
+  getData = () => {
+    this.db.collection("test")
+      .onSnapshot(function(querySnapshot) {
+        var cities = [];
+        querySnapshot.forEach(function(doc) {
+          cities.push(doc.data().val);
+        });
+        console.log("Current cities in CA: ", cities);
+        // add data to redux store
+        // console.log(this.props)
+        // this.props.dataAction(cities)
       });
   }
 
 
-  getData = () => {
-    let ref = firebase.database().ref('/test');
-    ref.on('value', snapshot => {
-      const state = snapshot.val();
-      console.log(state)
-      this.setState(state);
-    });
-    console.log('DATA RETRIEVED');
-
-  }
-
   componentDidMount() {
+     // const { firestore } = this.context.store
     // this.getData();
-    this.getUpdate();
   }
 
   render() {
@@ -86,4 +52,23 @@ class App extends React.Component {
   }
 }
 
-export default App;
+// connexts redux state -> react props
+const mapStateToProps = state => {
+  console.log('wtf', state);
+
+  return {
+    projects: state.firestore.ordered.projects
+  }
+}
+
+// connexts redux actions -> react props
+const mapDispatchToProps = dispatch => ({
+  dataAction: (data) => dispatch(dataAction(data))
+})
+
+
+export default compose(
+ firestoreConnect([{ collection: 'test' }]), 
+ connect(mapStateToProps)
+)(App)
+// export default connect(mapStateToProps, mapDispatchToProps)(App);
