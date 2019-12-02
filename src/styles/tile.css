@@ -1,7 +1,12 @@
 .tile {
-	height: 300px;
-	width: 400px;
+	height: 200px;
+	width: 500px;
 	background: white;
 	margin: 5px;
 	border-radius: 5px;
+}
+
+.title {
+	text-align: center;
+	margin: 10px 0px;
 }
