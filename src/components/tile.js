@@ -10,7 +10,7 @@ class Tile extends React.Component {
   }
 
   render() {
-    console.log(store.getState().data)
+    // console.log(store.getState().data)
   	var data = {
       labels: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
       series: [

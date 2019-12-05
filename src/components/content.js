@@ -11,7 +11,15 @@ class Content extends React.Component {
   }
 
   render() {
-    console.log(store.getState().data)
+    // var graph_data = store.getState().data
+    console.log(this.props.survey_questions)
+    // if (typeof graph_data !== "undefined") {
+    //   if (typeof graph_data[this.props.survey] !== "undefined") {
+    //     console.log(graph_data[this.props.survey])
+    //   }
+    // }
+
+   
   	// var data = {
    //    labels: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
    //    series: [
@@ -20,11 +28,15 @@ class Content extends React.Component {
    //      [1, 3, 4, 5, 6]
    //    ]
    //  }
-    const questions = ['q1', 'q2', 'q3', 'q4', 'q5', 'q6']
+    const questions = []
+    for (var q in this.props.survey_questions) {
+      questions.push(q)
+    }
     const tiles = questions.map((q, index) => <Tile data={q} key={index}/>)
     return (
      
     	<div className="content">
+        <div className="title">{this.props.survey}</div>
         {tiles}
       </div>
 		);

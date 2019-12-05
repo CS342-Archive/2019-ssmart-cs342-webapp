@@ -26,7 +26,7 @@ class Dashboard extends React.Component {
 		return (
 			<div className="dashboard">
 				<Sidebar />
-				<Content />
+				<Content survey_questions={this.props.data["ActiveSurveyTask"]} survey="ActiveSurveyTask"/>
 			</div>
 		);
 	}
@@ -94,7 +94,7 @@ const mapStateToProps = state => {
 
 	// dispatch state update
 	store.dispatch(dataAction(SET_LOCAL_DATA, survey_dict))
-
+	// console.log(survey_dict['ActiveSurveyTask'])
   	return {
     	data: survey_dict
   	}

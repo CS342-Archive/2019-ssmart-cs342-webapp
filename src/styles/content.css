@@ -9,3 +9,9 @@
 	justify-content: flex-start;
 	align-content: flex-start;
 }
+
+.title {
+	text-align: center;
+	width: 100%;
+	font-size: 1.5em;
+}
