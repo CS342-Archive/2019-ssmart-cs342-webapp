@@ -10,8 +10,8 @@ class Sidebar extends React.Component {
     	<div className="sidebar">
 		  	<ul>
 		  		<li><button><FontAwesomeIcon icon={faHome} className="mr"/>Home</button></li>
-		  		<li><button><FontAwesomeIcon icon={faCog} className="mr"/>Patients</button></li>
-		  		<li><button><FontAwesomeIcon icon={faHome} className="mr"/>Stats</button></li>
+		  		<li><button><FontAwesomeIcon icon={faCog} className="mr"/>Studies</button></li>
+		  		<li><button><FontAwesomeIcon icon={faCog} className="mr"/>Healthkit</button></li>
 		   	</ul>
 	   	</div>
 		);

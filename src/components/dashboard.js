@@ -29,18 +29,37 @@ class Dashboard extends React.Component {
 	}
 }
 
+// gets survey data
 // connexts redux state -> react props
 const mapStateToProps = state => {
   console.log('wtf dashboard', state);
+  var surveys = state.firestore.data.surveys
+  for (var survey_id in surveys) {
+  	let survey = surveys[survey_id]
+
+  	// survey name
+  	var survey_name = survey['identifier']
+  	// date survey was started
+  	var survey_start = survey['startDate']
+  	// survey questions
+  	var survey_questions = survey['results']
+  	for (var index in survey_questions) {
+  		var q = survey_questions[index]
+  		if (q['identifier'].includes('Instruction')) {
+  			console.log(q['identifier'])
+  		}
+  	}
+  	// console.log(survey['identifier'])
+  }
 
   return {
-    data: state.firestore.data.test
+    data: surveys
   }
 }
 
 
 // export default Dashboard
 export default compose(
- firestoreConnect([{ collection: 'test' }]), 
+ firestoreConnect([{ collection: 'surveys' }]), 
  connect(mapStateToProps)
 )(Dashboard)
