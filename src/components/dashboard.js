@@ -45,8 +45,30 @@ const mapStateToProps = state => {
   	var survey_questions = survey['results']
   	for (var index in survey_questions) {
   		var q = survey_questions[index]
-  		if (q['identifier'].includes('Instruction')) {
-  			console.log(q['identifier'])
+  		// dont collect data if it's an instruction step
+  		if (!q['identifier'].includes('Instruction')) {
+  			// console.log(q['identifier'])
+  			var results = q['results'][0]
+  			if (typeof results !== 'undefined') {
+  				
+  			
+	  			console.log('question results', results)
+	  			
+
+	  			// active survey question types
+	  			var data = ""
+	  			switch (results['questionType']) {
+	  				case 1:
+	  					data = results['scaleAnswer']
+	  					break
+	  				case 2:
+	  					data = results['choiceAnswers']
+	  					break
+	  				case 7:
+	  					data = results['booleanAnswer']
+	  					break
+	  			}
+	  		}
   		}
   	}
   	// console.log(survey['identifier'])
