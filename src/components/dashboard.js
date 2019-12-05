@@ -1,6 +1,5 @@
 import React from "react";
 import Sidebar from './sidebar'
-import Tile from './tile'
 import Content from './content'
 
 import './../styles/dashboard.css';
@@ -19,10 +18,14 @@ class Dashboard extends React.Component {
   }
 
 	render() {
+		var survey = "ActiveSurveyTask"
+		if (typeof this.props.active_survey !== "undefined") {
+			survey = this.props.active_survey
+		}
 		return (
 			<div className="dashboard">
 				<Sidebar />
-				<Content survey_questions={this.props.data["ActiveSurveyTask"]} survey="ActiveSurveyTask"/>
+				<Content survey_questions={this.props.data[survey]} survey={survey}/>
 			</div>
 		);
 	}
@@ -92,7 +95,8 @@ const mapStateToProps = state => {
 	store.dispatch(dataAction(SET_LOCAL_DATA, survey_dict))
 	// console.log(survey_dict['ActiveSurveyTask'])
   	return {
-    	data: survey_dict
+    	data: survey_dict,
+    	active_survey: state.data.active_survey
   	}
 }
 
