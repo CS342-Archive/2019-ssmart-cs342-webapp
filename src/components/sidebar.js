@@ -42,7 +42,7 @@ class Sidebar extends React.Component {
     return (
     	<div className="sidebar">
 		  	<ul>
-		  		<li><button onClick={this.handleClick} id="Home"><FontAwesomeIcon icon={faHome} className="mr"/>Home</button></li>
+		  		<li><button onClick={this.handleClick} id="Home"><FontAwesomeIcon icon={faHome} className="mr"/>SSMART Dashboard</button></li>
 		  		<li><button onClick={this.handleClick} id="ActiveSurveyTask"><FontAwesomeIcon icon={faNotesMedical} className="mr"/>Active Survey</button></li>
 		  		<li><button onClick={this.handleClick} id="MedicationSurveyTask"><FontAwesomeIcon icon={faNotesMedical} className="mr"/>Medication Survey</button></li>
 		  		<li><button onClick={this.handleClick} id="SF12Survey"><FontAwesomeIcon icon={faNotesMedical} className="mr"/>SF12 Survey</button></li>

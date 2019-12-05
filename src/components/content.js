@@ -1,5 +1,6 @@
 import React from "react";
 import Tile from './tile'
+import InfoTile from './infoTile'
 
 import './../styles/content.css';
 
@@ -18,7 +19,7 @@ class Content extends React.Component {
   // }
 
   render() {
-    
+
     // var graph_data = store.getState().data
     // console.log(graph_data[this.props.])
     // if (typeof graph_data !== "undefined") {
@@ -40,10 +41,26 @@ class Content extends React.Component {
     for (var q in this.props.survey_questions) {
       questions.push([q, this.props.survey_questions[q]])
     }
-    const tiles = questions.map((q, index) => <Tile title={addSpace(q[0])} data={q[1]} key={index}/>)
+    const survey_graph_type = {
+      "ActiveSurveyTask": 'Line',
+      "MedicationSurveyTask": 'Pie',
+      "SF12Survey": 'Bar',
+      "SOWSSurveyTask": 'Line',
+    }
+    const survey_total = {
+      "ActiveSurveyTask": 8,
+      "MedicationSurveyTask": 2,
+      "SF12Survey": 6,
+      "SOWSSurveyTask": 4,
+    }
+    const surveys = ["ActiveSurveyTask", "MedicationSurveyTask", "SF12Survey", "SOWSSurveyTask"]
+    var tiles = questions.map((q, index) => <Tile title={addSpace(q[0])} data={q[1]} type={survey_graph_type[this.props.survey]} key={index} />)
+    if (this.props.survey === 'Home') {
+      tiles = surveys.map((survey, index) => <InfoTile title={survey} total={survey_total[survey]} key={index} />)
+    }
     return (
     	<div className="content">
-        <div className="title">{addSpace(this.props.survey)}</div>
+        <div className="heading">{addSpace(this.props.survey)}</div>
         <div className="graphs">
           {tiles}
         </div>
