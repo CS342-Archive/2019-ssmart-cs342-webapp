@@ -10,20 +10,16 @@ class Tile extends React.Component {
   }
 
   render() {
-    // console.log(store.getState().data)
+    console.log(this.props.data)
   	var data = {
-      labels: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
-      series: [
-        [12, 9, 7, 8, 5],
-        [2, 1, 3.5, 7, 3],
-        [1, 3, 4, 5, 6]
-      ]
+      labels: ['W1', 'W2', 'W3', 'W4', 'W5', 'W6', 'W7', 'W8', 'W9', 'W10'],
+      series: [this.props.data]
     }
 
     return (
     	<div className="tile">
-        <div className="title">{this.props.data}</div>
-    		<ChartistGraph data={data} type={'Line'} />
+        <div className="title">{this.props.title}</div>
+    		<ChartistGraph data={data} type='Line' />
 	   	</div>
 		);
 	}

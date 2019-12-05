@@ -5,14 +5,31 @@ import './../styles/content.css';
 
 import store from "./../store.js"
 
+function add_space(str) {
+  var prev_upper = true
+  var ret = ""
+  for (var i = 0; i < str.length; i++) {
+    let char = str.charAt(i)
+    let upper = (char == char.toUpperCase())
+    
+    // add a space
+    if (upper && !prev_upper) {
+      ret = ret.concat(" ")
+    } 
+    ret = ret.concat(char)
+    prev_upper = upper
+  }
+  return ret
+}
+
 class Content extends React.Component {
   constructor(props) {
     super(props);
   }
 
   render() {
-    // var graph_data = store.getState().data
-    console.log(this.props.survey_questions)
+    var graph_data = store.getState().data
+    // console.log(graph_data[this.props.])
     // if (typeof graph_data !== "undefined") {
     //   if (typeof graph_data[this.props.survey] !== "undefined") {
     //     console.log(graph_data[this.props.survey])
@@ -30,14 +47,15 @@ class Content extends React.Component {
    //  }
     const questions = []
     for (var q in this.props.survey_questions) {
-      questions.push(q)
+      questions.push([q, this.props.survey_questions[q]])
     }
-    const tiles = questions.map((q, index) => <Tile data={q} key={index}/>)
+    const tiles = questions.map((q, index) => <Tile title={add_space(q[0])} data={q[1]} key={index}/>)
     return (
-     
     	<div className="content">
-        <div className="title">{this.props.survey}</div>
-        {tiles}
+        <div className="title">{add_space(this.props.survey)}</div>
+        <div className="graphs">
+          {tiles}
+        </div>
       </div>
 		);
 	}

@@ -18,11 +18,7 @@ class Dashboard extends React.Component {
     super(props);
   }
 
-  
-// <Tile data={this.props.data}/>
 	render() {
-		const questions = ['q1', 'q2', 'q3', 'q4', 'q5', 'q6']
-  		const tiles = questions.map((q, index) => <Tile data={q} key={index}/>)
 		return (
 			<div className="dashboard">
 				<Sidebar />

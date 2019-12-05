@@ -3,15 +3,21 @@
 	margin-left: 240px;
 	padding: 5px;
 	background: #EFEFEF;
-	display: flex;
-	flex-direction: row;
-	flex-wrap: wrap;
-	justify-content: flex-start;
-	align-content: flex-start;
 }
 
 .title {
 	text-align: center;
 	width: 100%;
 	font-size: 1.5em;
+}
+
+.graphs {
+	width: 90%;
+	margin: auto;
+
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: space-around;
+	align-content: flex-start;
 }
