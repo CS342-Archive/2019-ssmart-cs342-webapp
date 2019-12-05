@@ -1,12 +1,17 @@
 import React from "react";
 import Sidebar from './sidebar'
 import Tile from './tile'
+import Content from './content'
+
 import './../styles/dashboard.css';
 
 import { connect } from "react-redux";
 import { compose } from 'redux'
 import { firestoreConnect } from 'react-redux-firebase'
 
+import store from "./../store.js"
+import { SET_LOCAL_DATA } from "./../constants/actionTypes";
+import dataAction from './../actions/dataAction.js'
 
 class Dashboard extends React.Component {
 	constructor(props) {
@@ -17,13 +22,11 @@ class Dashboard extends React.Component {
 // <Tile data={this.props.data}/>
 	render() {
 		const questions = ['q1', 'q2', 'q3', 'q4', 'q5', 'q6']
-  	const tiles = questions.map((q, index) => <Tile data={q} key={index}/>)
+  		const tiles = questions.map((q, index) => <Tile data={q} key={index}/>)
 		return (
 			<div className="dashboard">
 				<Sidebar />
-				<div className="content">
-					{tiles}
-				</div>
+				<Content />
 			</div>
 		);
 	}
@@ -32,7 +35,7 @@ class Dashboard extends React.Component {
 // gets survey data
 // connexts redux state -> react props
 const mapStateToProps = state => {
-	console.log('wtf dashboard', state);
+	// console.log('wtf dashboard', state);
 
 	var survey_dict = {}
 	var surveys = state.firestore.data.surveys
@@ -54,8 +57,6 @@ const mapStateToProps = state => {
 	  			var results = q['results'][0]
 	  			if (typeof results !== 'undefined') {
 	  			
-		  			// console.log('question results', results)
-		  		
 		  			// active survey question types
 		  			var data = ""
 		  			switch (results['questionType']) {
@@ -64,7 +65,7 @@ const mapStateToProps = state => {
 		  					break
 		  				case 2:
 		  					if (typeof results['choiceAnswers'] !== 'undefined') {
-		  						data = results['choiceAnswers']
+		  						data = results['choiceAnswers'][0]
 		  					}
 		  					break
 		  				case 7:
@@ -89,11 +90,16 @@ const mapStateToProps = state => {
 	  	}
 	}
 
-	console.log(survey_dict)
+	// console.log(survey_dict)
+
+	// dispatch state update
+	store.dispatch(dataAction(SET_LOCAL_DATA, survey_dict))
+
   	return {
-    	data: surveys
+    	data: survey_dict
   	}
 }
+
 
 
 // export default Dashboard

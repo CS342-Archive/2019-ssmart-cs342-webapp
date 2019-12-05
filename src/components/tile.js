@@ -2,12 +2,15 @@ import React from "react";
 import ChartistGraph from 'react-chartist';
 import './../styles/tile.css';
 
+import store from "./../store.js"
+
 class Tile extends React.Component {
   constructor(props) {
     super(props);
   }
 
   render() {
+    console.log(store.getState().data)
   	var data = {
       labels: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
       series: [
@@ -26,5 +29,11 @@ class Tile extends React.Component {
 	}
 }
 
+// const mapStateToProps = state => {
+//   console.log('tile state', state)
+//   return {
+//     graph_data: state.data
+//   }
+// }
 export default Tile
 

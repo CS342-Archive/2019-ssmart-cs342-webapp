@@ -1,9 +1,8 @@
-import { GET_DATA } from "./../constants/actionTypes";
 
 // action creator
-const dataAction = (data) => {
+const dataAction = (type, data) => {
 	return {
-	  type: GET_DATA,
+	  type: type,
 	  payload: data
 	}
 }

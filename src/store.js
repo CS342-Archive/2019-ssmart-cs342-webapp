@@ -1,5 +1,5 @@
 import { createStore, combineReducers, compose } from 'redux'
-import rotateReducer from "./reducers/rotateReducer";
+import dataReducer from "./reducers/dataReducer";
 
 import { reduxFirestore, firestoreReducer } from 'redux-firestore'
 import { ReactReduxFirebaseProvider, firebaseReducer } from 'react-redux-firebase'
@@ -22,7 +22,8 @@ const createStoreWithFirebase = compose(
 
 // Add Firebase to reducers
 const rootReducer = combineReducers({
-  firestore: firestoreReducer
+  firestore: firestoreReducer,
+  data: dataReducer
 })
 
 // Create store with reducers and initial state

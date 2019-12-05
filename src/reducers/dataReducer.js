@@ -1,11 +1,12 @@
-import { GET_DATA } from "./../constants/actionTypes";
+import { GET_DATA, SET_LOCAL_DATA } from "./../constants/actionTypes";
 
 export default (state = [], action) => {
   switch (action.type) {
-    case "rotate":
+    case SET_LOCAL_DATA:
       return {
-        rotating: action.payload
-      };
+        ...state,
+        data: action.payload
+      }
     case GET_DATA:
     	return {
     		...state,
